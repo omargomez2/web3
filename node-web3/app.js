@@ -5,13 +5,13 @@
 
 
 var express = require('express');
-const bodyParser = require("body-parser");
-const cors = require("cors");
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 var app = express();
 
-const Web3 = require("web3");
-var web3 = new Web3("http://127.0.0.1:7545");
+const Web3 = require('web3');
+var web3 = new Web3('http://127.0.0.1:7545');
 
 // Set EJS as templating engine
 app.set('view engine', 'ejs');
@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 
 // Resources definition
-app.get("/", async (req, res) => {
+app.get('/', async (req, res) => {
   accounts = await web3.eth.getAccounts();
   acc = {acc:JSON.parse(JSON.stringify(accounts))}
   console.log(acc);
@@ -41,7 +41,7 @@ app.get("/api/sc", async (req, res) => {
 
 
 
-app.post("/api/transaction", async (req, res) => {
+app.post('/api/transaction', async (req, res) => {
 	
   const trans = JSON.parse(JSON.stringify(req.body));
   console.log(trans.from);
@@ -115,7 +115,7 @@ app.post('/api/contract', async (req, res)=>{
 
 
 //Call smart contract method, get saved value
-app.get("/api/getvalue", async (req, res) => {
+app.get('/api/getvalue', async (req, res) => {
 
   contract = new web3.eth.Contract([
 	{
