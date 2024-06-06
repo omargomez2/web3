@@ -55,7 +55,7 @@ app.post('/api/transaction', async (req, res) => {
          from:trans.from,
          to:trans.to,
          value:web3.utils.toWei(trans.value, 'ether'),
-         gas:trans.gas,
+         gas:trans.gas,   //en caso de error sustituir por gasPrice:trans.gas ingresar un valor grande
       },
       privKey
   );
